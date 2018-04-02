@@ -1,0 +1,139 @@
+//*************************** infrastructure slider
+
+$main_slider_w: 74.5%;
+$main_slider_h: 515px;
+
+%transition_all_03s {
+    transition: all .3s ease;
+}
+
+%backface_visibility_hidden {
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+}
+
+.infrastructure_slider {
+    background: #ececec;
+    padding-top: 15px;
+
+    .section_title {
+        margin-bottom: 15px;
+    }
+
+    .swiper-container {
+        width: 100%;
+        height: $main_slider_h * .75;
+        transition: opacity .6s ease, transform .3s ease;
+
+        &.nav-slider {
+            display: none;
+
+            .swiper-slide {
+                cursor: pointer;
+                opacity: .5;
+                transition: opacity .3s ease;
+                &.swiper-slide-active {
+                    opacity: 1;
+                }
+                .content {
+                    width: 100%;
+                    left: 18px;
+                    bottom: 8px;
+
+                    .title {
+                        font: bold 21px $opensans;
+                    }
+                }
+            }
+        }
+        &:hover {
+            .swiper-button-prev,
+            .swiper-button-next {
+                transform: translateX(0);
+                opacity: 1;
+                visibility: visible;
+            }
+        }
+        &.loading {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        @include respond-to-min($resp_step_2) {
+            width: $main_slider_w;
+            height: $main_slider_h;
+            float: left;
+
+            &.nav-slider {
+                display: block;
+                width: 100% - $main_slider_w;
+                padding-left: 20px;
+            }
+        }
+    }
+
+    .swiper-wrapper {
+
+    }
+
+    .swiper-slide {
+        overflow: hidden;
+        @extend %backface_visibility_hidden;
+        .slide-bgimg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-position: center;
+            background-size: cover;
+        }
+        .entity-img {
+            display: none;
+        }
+        .content {
+            position: absolute;
+            bottom: 22px;
+            left: 25px;
+            width: 80%;
+            color: #fff;
+
+            .title {
+                font: bold 48px $mullerbold;
+                margin-bottom: 5px;
+            }
+            .caption {
+                display: block;
+                font-size: 14px;
+                line-height: 1.5;
+                transform: translateX(50px);
+                opacity: 0;
+                transition: opacity .3s ease, transform .7s ease;
+                &.show {
+                    transform: translateX(0);
+                    opacity: 1;
+                }
+            }
+
+            @include respond-to-min($resp_step_1) {
+                left: 60px;
+                width: 70%;
+            }
+        }
+    }
+
+    [class^="swiper-button-"] {
+        width: 44px;
+        opacity: 0;
+        visibility: hidden;
+        @extend %transition_all_03s;
+    }
+
+    .swiper-button-prev {
+        transform: translateX(50px);
+    }
+
+    .swiper-button-next {
+        transform: translateX(-50px);
+    }
+}

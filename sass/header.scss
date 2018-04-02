@@ -1,0 +1,246 @@
+//*************************** header
+
+.header {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 10;
+
+    > .section_inner {
+        padding-top: 10px;
+        min-height: 70px;
+        position: relative;
+        z-index: 8;
+        background: #fff;
+    }
+
+    @include respond-to-min($resp_step_2) {
+        position: absolute;
+    }
+}
+
+.logo_block {
+    float: left;
+}
+
+.logo {
+    font: bold 14px/20px $mullerbold;
+    color: #3e3e3e;
+    position: relative;
+    display: block;
+    width: 240px;
+
+    img {
+        float: left;
+        margin-right: 7px;
+    }
+
+    span {
+        float: left;
+        padding-top: 5px;
+    }
+
+    @include respond-to-min($resp_step_1) {
+        width: 270px;
+        font-size: 18px;
+    }
+}
+
+.mob_menu_btn {
+    float: right;
+    position: relative;
+    margin: 2px;
+    width: 44px;
+    height: 44px;
+    border-radius: 100%;
+    background: $clr_orange;
+
+    &:before {
+        top: 17px;
+    }
+
+    &:after {
+        top: 21px;
+    }
+
+    span,
+    &:after,
+    &:before {
+        @include transition_all(transform .3s, top .3s);
+        content: '';
+        position: absolute;
+        left: 15px;
+        width: 14px;
+        height: 2px;
+        background: white;
+    }
+
+    span {
+        @include transition_all(opacity .3s);
+        width: 8px;
+        top: 25px;
+        opacity: 1;
+    }
+
+    .menu_opened & {
+        &:before {
+            transform: rotate(-45deg);
+            top: 21px;
+        }
+
+        &:after {
+            transform: rotate(45deg);
+            top: 21px;
+        }
+
+        span {
+            opacity: 0;
+        }
+    }
+
+    @include respond-to-min($resp_step_1) {
+        margin: 5px;
+    }
+
+    @include respond-to-min($resp_step_2) {
+        display: none;
+    }
+}
+
+.callback_block {
+    display: none;
+    float: right;
+    margin-right: 15px;
+    border-radius: 30px;
+    background: #f3f3f3;
+    min-height: 54px;
+    padding: 5px 55px 5px 20px;
+    position: relative;
+
+    &:before {
+        content: '';
+        position: absolute;
+        right: 5px;
+        top: 5px;
+        width: 44px;
+        height: 44px;
+        background: $clr_orange url(../i/phone.png) no-repeat 50% 50%;
+        border-radius: 100%;
+    }
+
+    @include respond-to-min($resp_step_1) {
+        display: block;
+    }
+}
+
+.callback_link {
+    font: bold 16px/26px $mullerbold;
+    letter-spacing: .04em;
+    color: $default_t_color;
+    text-decoration: none;
+
+    @include respond-to-min($resp_step_1) {
+        font-size: 18px;
+    }
+}
+
+.callback_time {
+    padding-left: 15px;
+    font-size: 13px;
+    text-align: center;
+}
+
+// *********  menu
+
+.main_menu_holder {
+    padding: 22px 0 10px;
+
+    .callback_block {
+        display: none;
+    }
+
+    @include respond-to-max($resp_step_2) {
+        @include transition_all(transform .3s);
+        @include transform_translate(100%, 0);
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        width: 280px;
+        overflow: hidden;
+        z-index: 5;
+        background: #fff;
+        padding: 85px 0 75px;
+        box-shadow: -5px 2px 5px rgba(0, 0, 0, 0.25);
+
+        .menu_item {
+            margin-top: 10px;
+        }
+
+        .menu_link {
+            padding: 0 10px;
+        }
+
+        .menu_opened & {
+            @include transform_translate(0, 0);
+        }
+    }
+
+    @include respond-to-max($resp_step_1) {
+        .callback_block {
+            display: block;
+            position: absolute;
+            left: 10px;
+            bottom: 10px;
+        }
+
+        .section_inner {
+            max-height: 100%;
+            overflow-y: auto;
+        }
+    }
+
+    @include respond-to-min($resp_step_2) {
+    }
+}
+
+.main_menu {
+
+    @include respond-to-min($resp_step_2) {
+        display: table;
+        width: 100%;
+        table-layout: fixed;
+        border-collapse: collapse;
+
+        .menu_item {
+            float: none;
+            text-align: center;
+            display: table-cell;
+            border: solid #d2d2d2;
+            border-width: 0 1px;
+        }
+    }
+}
+
+.menu_item {
+    float: left;
+}
+
+.menu_link {
+    cursor: pointer;
+    position: relative;
+    display: block;
+    width: 100%;
+    text-decoration: none;
+    font-size: 14px;
+    line-height: 21px;
+    color: $default_t_color;
+    text-transform: uppercase;
+    letter-spacing: .21em;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
+

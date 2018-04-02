@@ -1,0 +1,206 @@
+- var prod = true;
+- var prod = false;
+
+mixin dev_head(page_title)
+    head
+        title=page_title
+        |
+        | <!-- saved from url=(0014)about:internet -->
+        meta(charset='utf-8')
+        meta(name='viewport', content="width=device-width, initial-scale=1.0")
+        meta(name="SKYPE_TOOLBAR", content="SKYPE_TOOLBAR_PARSER_COMPATIBLE")
+        meta(name="apple-mobile-web-app-capable", content="yes")
+        meta(name="format-detection", content="telephone=no")
+        meta(name="theme-color" content="#f66036")
+        link(rel='stylesheet', href='styles/main_global.css', media='all')
+        link(href='//fonts.googleapis.com/css?family=Open+Sans:400,600,700&amp;subset=cyrillic', rel='stylesheet', type='text/css')
+
+mixin loop_while(counter)
+    -i=0;
+    while i < counter
+        -i++;
+        block
+
+mixin header()
+    .header
+        .section_inner.clearfix
+            .logo_block
+                a.logo(href='#')
+                    img(src='i/logo.png')
+                    span Новые Ватутинки<br>Центральный квартал
+
+            a.mob_menu_btn.menuBtn(href='#')
+                span
+
+            .callback_block
+                a.callback_link(href='tel:+74954567887') +7 (495) 456-78-87
+                .callback_time c 9:00 до 21:00
+
+        .main_menu_holder
+            .section_inner
+                ul.main_menu
+                    li.menu_item
+                        a.menu_link(href='#')
+                            span квартиры
+                    li.menu_item
+                        a.menu_link(href='#')
+                            span условия покупки
+                    li.menu_item
+                        a.menu_link(href='#')
+                            span ход строительства
+                    li.menu_item
+                        a.menu_link(href='#')
+                            span контакты
+
+            .callback_block
+                a.callback_link(href='tel:+74954567887') +7 (495) 456-78-87
+                .callback_time c 9:00 до 21:00
+
+mixin footer()
+    .footer
+        .section_inner.clearfix
+            .footer_col._col_1
+                .logo_block
+                    a.logo(href='#')
+                        img(src='i/logo.png')
+                        span Новые Ватутинки<br>Центральный квартал
+
+            .footer_col._col_2
+                p Контакты ЖК «Ватутинки-Центральный квартал»
+                p
+                    a.footer_phone(href='tel:+74954567887') +7 (495) 456-78-87
+                p г. Москва, НАО, поселение Десеновское,<br>вблизи дер. Десна («Новые Ватутинки»)
+
+            .footer_col._col_3
+                p Гипермаркет недвижимости
+                p
+                    a.dev_link(href='#')
+                        span www.kvartyroom.ru
+
+            .footer_col._col_4
+                p
+                    span Строительство по&nbsp;
+                    a.clr_orange(href='#') ФЗ-214
+
+
+mixin infrastructure_slider()
+    .infrastructure_slider
+        .section_inner.clearfix
+            .section_title Инфраструктура
+
+            .swiper-container.main-slider.loading
+                .swiper-wrapper
+                    +loop_while(3)
+                        .swiper-slide
+                            figure.slide-bgimg(style='background-image:url(i/infrastructure_2.jpg)')
+                                img.entity-img(src='i/infrastructure_2.jpg')
+                            .content
+                                p.title Школа
+                                span.caption
+                                    | Район Центральный Новые Ватутинки расположен в границах города Москвы, в 14 км. от МКАД по Калужскому и в 25 км. от МКАД по Киевскому шоссе. Процент заспамленности текста отражает.
+
+                // If we need navigation buttons
+                .swiper-button-prev.swiper-button-white
+                .swiper-button-next.swiper-button-white
+            // Thumbnail navigation
+            .swiper-container.nav-slider.loading
+                .swiper-wrapper
+                    .swiper-slide
+                        figure.slide-bgimg(style='background-image:url(i/infrastructure_1s.jpg)')
+                            img.entity-img(src='i/infrastructure_1s.jpg')
+                        .content
+                            p.title Торговый центр
+                    .swiper-slide
+                        figure.slide-bgimg(style='background-image:url(i/infrastructure_2s.jpg)')
+                            img.entity-img(src='i/infrastructure_2s.jpg')
+                        .content
+                            p.title Школа
+                    .swiper-slide
+                        figure.slide-bgimg(style='background-image:url(i/infrastructure_3s.jpg)')
+                            img.entity-img(src='i/infrastructure_3s.jpg')
+                        .content
+                            p.title Поликлиника
+
+mixin main_slider()
+    .main_slider_holder
+        .section_inner
+            .main_slider.mainSlider.swiper-container: .swiper-wrapper
+                +loop_while(3)
+                    .slide.swiper-slide
+                        img(src='i/slide_1.jpg')
+
+            .main_slider_prev.slidePrev
+            .main_slider_next.slideNext
+
+mixin benefits_section()
+    .benefits_section
+        .section_inner
+            .section_title ЖК «Новые Ватутинки»<br>центральный микрорайон
+            ul.benefits_list
+                li
+                    .benefit_item
+                        p Под дворовой территорией корпусов 10/1 и 10/2 расположен двухуровневый паркинг
+                li
+                    .benefit_item
+                        p Согласно градостроительным планам по развитию новых территорий
+                li
+                    .benefit_item
+                        p Под дворовой территорией корпусов 10/1 и 10/2 расположен двухуровневый паркинг
+
+
+mixin action_section(index)
+    .action_section
+        .section_inner
+            -if (index === 1)
+                .text_center
+                    .action_title Квартиры от 2.4 млн.руб.
+                    p Узнайте больше у менеджеров по телефону
+                    p
+                        a.action_link(href='tel:+74951234567'): span +7 (495) 123-45-67
+
+            -if (index === 2)
+                .action_block
+                    .action_title Квартиры от 2 495 000 до 4 956 000 млн.руб.
+                    .action_btn_holder
+                        a.action_btn(href='#') смотреть все
+
+
+mixin overview_section()
+    .overview_section
+        .section_inner
+            .overview_image
+                a.overview_play(href='#')
+                img(src='i/object_1.jpg')
+
+            ul.overview_list
+                li._active
+                    .overview_item
+                        .overview_i: img(src='i/object_preview_1.jpg')
+                        p видеообзор
+                li
+                    .overview_item
+                        .overview_i: img(src='i/object_preview_1.jpg')
+                        p облет с коптера
+                li
+                    .overview_item
+                        .overview_i: img(src='i/object_preview_1.jpg')
+                        p обзор комплекса
+
+
+
+mixin scripts(contacts)
+  //-link(rel='stylesheet', href='styles/main_global.css', media='all')
+
+  - if (prod)
+    script(src='js/main.min.js' + '?t=' + time)
+  - else
+    script(src='js/jquery1.10.js' + '?t=' + time)
+    script(src='js/select2.js' + '?t=' + time)
+    script(src='js/swiper.min.js' + '?t=' + time)
+    script(src='js/jquery.inputmask.bundle.js' + '?t=' + time)
+    script(src='js/script.js' + '?t=' + time)
+
+  - if (contacts)
+    script(src='js/contacts' + (prod ? '.min' : '') + '.js')
+    script(src='//maps.googleapis.com/maps/api/js?key=AIzaSyCl7THpWflv0u70jhfuU4T6KbuNy0fuxME&callback=loadMap')
+

@@ -1,0 +1,56 @@
+//*************************** article
+
+.article_section {
+    padding: 25px 0;
+
+    @include respond-to-min($resp_step_2) {
+        padding-top: 35px;
+    }
+}
+
+.article_block {
+
+    h3 {
+        color: #292929;
+        font-size: 16px;
+        line-height: 1;
+        font-weight: bold;
+        text-transform: uppercase;
+        margin-bottom: 20px;
+    }
+
+    p {
+        font-size: 15px;
+        line-height: 20px;
+        margin-bottom: 10px;
+
+        @include respond-to-min($resp_step_2) {
+            line-height: 26px;
+        }
+    }
+}
+
+.article_img {
+    text-align: center;
+    margin-bottom: 15px;
+
+    img {
+        display: inline-block;
+        vertical-align: top;
+        max-width: 100%;
+    }
+
+    @include respond-to-min($resp_step_1) {
+        margin-bottom: 40px;
+
+        &._left {
+            float: left;
+            padding-right: 25px;
+        }
+
+        &._right {
+            float: right;
+            padding-left: 25px;
+        }
+    }
+}
