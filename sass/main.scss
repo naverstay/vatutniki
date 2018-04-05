@@ -72,7 +72,7 @@ body {
         width: 48px;
         height: 45px;
         left: 50%;
-        top: -3px;
+        top: 3px;
         margin-left: -24px;
         background: url(../i/check_circle.png) no-repeat 50% 50%;
     }
@@ -84,6 +84,10 @@ body {
 
     @include respond-to-min($resp_step_2) {
         padding: 65px 20px 10px;
+
+        &:before {
+            top: -3px;
+        }
     }
 }
 
@@ -114,14 +118,31 @@ body {
     .section_inner {
         max-width: 880px;
     }
+
+    .swiper-button-next {
+        background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M27%2C22L27%2C22L5%2C44l-2.1-2.1L22.8%2C22L2.9%2C2.1L5%2C0L27%2C22L27%2C22z'%20fill%3D'%23f66036'%2F%3E%3C%2Fsvg%3E");
+    }
+
+    .swiper-button-prev {
+        background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M0%2C22L22%2C0l2.1%2C2.1L4.2%2C22l19.9%2C19.9L22%2C44L0%2C22L0%2C22L0%2C22z'%20fill%3D'%23f66036'%2F%3E%3C%2Fsvg%3E");
+    }
+
+    .swiper-button-disabled {
+        display: none;
+    }
 }
 
 .overview_image {
+    display: none;
     position: relative;
 
     img {
         display: block;
         width: 100%;
+    }
+
+    &._active {
+        display: block;
     }
 }
 
@@ -140,7 +161,7 @@ body {
 .overview_list {
     @extend %clearfix;
 
-    @include respond-to-min($resp_step_2) {
+    @include respond-to-min($resp_step_1) {
         margin-right: -1%;
 
         li {
@@ -156,6 +177,7 @@ body {
     background: #ececec;
     text-align: center;
     padding: 20px;
+    display: block;
 
     p {
         text-transform: uppercase;
@@ -319,6 +341,15 @@ body {
     dd {
         color: $clr_orange;
         margin-bottom: 21px;
+    }
+}
+
+.doc_link {
+    color: $clr_orange;
+    text-decoration: none;
+
+    &:hover {
+        text-decoration: underline;
     }
 }
 

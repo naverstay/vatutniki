@@ -54,6 +54,15 @@ $main_slider_h: 515px;
                 visibility: visible;
             }
         }
+
+        @include respond-to-max($resp_step_2) {
+            .swiper-button-prev,
+            .swiper-button-next {
+                transform: translateX(0);
+                opacity: 1;
+                visibility: visible;
+            }
+        }
         &.loading {
             opacity: 0;
             visibility: hidden;

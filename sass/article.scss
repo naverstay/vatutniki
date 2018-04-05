@@ -22,7 +22,7 @@
     p {
         font-size: 15px;
         line-height: 20px;
-        margin-bottom: 10px;
+        margin-bottom: 40px;
 
         @include respond-to-min($resp_step_2) {
             line-height: 26px;
@@ -30,9 +30,20 @@
     }
 }
 
+.article_center {
+
+    @include respond-to-min($resp_step_1) {
+        text-align: center;
+    }
+}
+
 .article_img {
-    text-align: center;
     margin-bottom: 15px;
+    margin-top: 40px;
+
+    &:first-child {
+        margin-top: 0;
+    }
 
     img {
         display: inline-block;

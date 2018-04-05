@@ -125,9 +125,14 @@ mixin main_slider()
     .main_slider_holder
         .section_inner
             .main_slider.mainSlider.swiper-container: .swiper-wrapper
-                +loop_while(3)
-                    .slide.swiper-slide
-                        img(src='i/slide_1.jpg')
+                .slide.swiper-slide
+                    img(src='i/slide_1.jpg')
+                .slide.swiper-slide
+                    img(src='i/slide_2.jpg')
+                .slide.swiper-slide
+                    img(src='i/slide_3.jpg')
+                .slide.swiper-slide
+                    img(src='i/slide_4.jpg')
 
             .main_slider_prev.slidePrev
             .main_slider_next.slideNext
@@ -168,24 +173,33 @@ mixin action_section(index)
 mixin overview_section()
     .overview_section
         .section_inner
-            .overview_image
-                a.overview_play(href='#')
-                img(src='i/object_1.jpg')
+            .overview_holder.overviewHolder
+                #tab_1.overview_image._active
+                    a.overview_play(href='#')
+                    img(src='i/object_1.jpg')
+                #tab_2.overview_image
+                    a.overview_play(href='#')
+                    img(src='i/object_2.jpg')
+                #tab_3.overview_image
+                    a.overview_play(href='#')
+                    img(src='i/object_3.jpg')
 
-            ul.overview_list
-                li._active
-                    .overview_item
-                        .overview_i: img(src='i/object_preview_1.jpg')
-                        p видеообзор
-                li
-                    .overview_item
-                        .overview_i: img(src='i/object_preview_1.jpg')
-                        p облет с коптера
-                li
-                    .overview_item
-                        .overview_i: img(src='i/object_preview_1.jpg')
-                        p обзор комплекса
-
+            .swiper-container.overviewSlider
+                ul.overview_list.swiper-wrapper
+                    li._active.swiper-slide
+                        a.overview_item.overviewTab(href='#tab_1')
+                            .overview_i: img(src='i/object_preview_1.jpg')
+                            p видеообзор
+                    li.swiper-slide
+                        a.overview_item.overviewTab(href='#tab_2')
+                            .overview_i: img(src='i/object_preview_1.jpg')
+                            p облет с коптера
+                    li.swiper-slide
+                        a.overview_item.overviewTab(href='#tab_3')
+                            .overview_i: img(src='i/object_preview_1.jpg')
+                            p обзор комплекса
+                .swiper-button-next
+                .swiper-button-prev
 
 
 mixin scripts(contacts)

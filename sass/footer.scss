@@ -60,6 +60,31 @@
         overflow: hidden;
     }
 
+    @include landscape() {
+        float: left;
+        padding-right: 10px;
+
+        &._col_1 {
+            width: 50%;
+        }
+
+        &._col_2 {
+            width: 50%;
+        }
+
+        &._col_3 {
+            width: 50%;
+            float: right;
+        }
+
+        &._col_4 {
+            width: 30%;
+            position: absolute;
+            bottom: 0;
+            left: 12px;
+        }
+    }
+
     @include respond-to-min($resp_step_1) {
         float: left;
         padding-right: 10px;
@@ -86,8 +111,6 @@
     }
 
     @include respond-to-min($resp_step_2) {
-
-
         &._col_1 {
             width: 34.3%;
         }
@@ -99,7 +122,6 @@
         &._col_3 {
             width: 23.4%;
         }
-
     }
 }
 

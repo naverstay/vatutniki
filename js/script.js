@@ -1,4 +1,4 @@
-var $body;
+var $body, overviewSlider;
 
 function detectBrowser() {
     var myNav = navigator.userAgent.toLowerCase(),
@@ -39,11 +39,54 @@ $(function ($) {
 
     initInfrastructureSlider();
 
+    initOverviewSlider();
+
     $body.delegate('.menuBtn', 'click', function () {
         $body.removeClass('search_opened').toggleClass('menu_opened');
         return false;
+    }).delegate('.overviewTab', 'click', function () {
+        var btn = $(this), target = $(btn.attr('href'));
+
+        if (target.length) {
+            btn.parent().addClass('_active').siblings().removeClass('_active');
+            target.addClass('_active').siblings().removeClass('_active');
+        }
+
+        return false;
     });
 });
+
+function initOverviewSlider() {
+    // Overview Slider
+
+    var overviewOptions = {
+        //loop: true,
+        //loopAdditionalSlides: 3,
+        speed: 1000,
+        spaceBetween: 0,
+        slidesPerView: 3,
+        //centeredSlides: true,
+        touchRatio: 0.1,
+        slideToClickedSlide: true,
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev'
+        },
+        breakpoints: {
+            768: {
+                slidesPerView: 1
+            }
+        },
+        on: {
+            slideChangeTransitionEnd: function (swp) {
+                $(this.slides).filter('.swiper-slide-active').find('.overviewTab').click();
+            }
+        }
+    };
+
+    overviewSlider = new Swiper('.overviewSlider', overviewOptions);
+
+}
 
 function initInfrastructureSlider() {
     var mainSliderSelector = '.main-slider',
@@ -142,7 +185,11 @@ function initMainSlider() {
         freeModeSticky: true,
         freeMode: true,
         loop: true,
-        speed: 800,
+        speed: 1000,
+        autoplay: {
+            delay: 6000,
+            disableOnInteraction: false
+        },
         navigation: {
             nextEl: '.slideNext',
             prevEl: '.slidePrev'

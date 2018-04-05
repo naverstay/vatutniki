@@ -1,10 +1,15 @@
 //*************************** main slider
 
 .main_slider_holder {
-    padding: 0 50px;
+    margin: 0 -12px;
 
     .section_inner {
         position: relative;
+    }
+
+    @include respond-to-min($resp_step_2) {
+        margin: 0;
+        padding: 0 50px;
     }
 }
 
@@ -20,7 +25,7 @@
 
     &:before {
         @include transition_all(opacity .3s);
-        opacity: .5;
+        //opacity: .5;
         content: '';
         position: absolute;
         height: 32px;
@@ -30,7 +35,7 @@
         max-width: 35px;
 
         @include respond-to-min($resp_step_2) {
-            max-width: 100px;
+            //max-width: 100px;
         }
     }
 
@@ -48,6 +53,10 @@
         left: 0;
         background: url(../i/chevron_r.png) no-repeat 100% 50%;
     }
+
+    @include respond-to-max($resp_step_2) {
+        margin-left: -60px;
+    }
 }
 
 .main_slider_prev {
@@ -56,6 +65,10 @@
     &:before {
         right: 0;
         background: url(../i/chevron_l.png) no-repeat 0 50%;
+    }
+
+    @include respond-to-max($resp_step_2) {
+        margin-right: -60px;
     }
 }
 
@@ -71,16 +84,22 @@
     }
 
     .slide {
-        @include transition_all(filter .5s);
         float: left;
         overflow: hidden;
-        -webkit-filter: blur(5px);
-        filter: blur(5px);
+
+        img {
+            @include transition_all(filter .5s);
+            display: block;
+            -webkit-filter: blur(5px);
+            filter: blur(5px);
+        }
 
         &.swiper-slide-active,
         &.slick-current {
-            -webkit-filter: none;
-            filter: none;
+            img {
+                -webkit-filter: none;
+                filter: none;
+            }
         }
     }
 }
