@@ -1,0 +1,45 @@
+include mixins.pug
+doctype html
+html(lang='ru')
+    +dev_head('Ватутники ход строительства')
+
+    body
+        .wrapper
+            .base
+                +header(true)
+
+                div.main_content
+                    .process_section
+                        .section_inner
+                            h3.process_caption Январь 2017
+
+                            a.process_img(href='i/process_1.jpg' data-fancybox="gallery1")
+                                img(src='i/process_1.jpg')
+                                span 10 фотографий за январь 2017
+
+                            a.hide(data-fancybox="gallery1" href='i/process_img_1.jpg'): img(src='i/process_img_1.jpg')
+                            a.hide(data-fancybox="gallery1" href='i/process_img_1.jpg'): img(src='i/process_img_1.jpg')
+                            a.hide(data-fancybox="gallery1" href='i/process_img_1.jpg'): img(src='i/process_img_1.jpg')
+                            a.hide(data-fancybox="gallery1" href='i/process_img_1.jpg'): img(src='i/process_img_1.jpg')
+                            a.hide(data-fancybox="gallery1" href='i/process_img_1.jpg'): img(src='i/process_img_1.jpg')
+                            a.hide(data-fancybox="gallery1" href='i/process_img_1.jpg'): img(src='i/process_img_1.jpg')
+
+                            h3.process_caption Декабрь 2016
+                            a.process_img(href='i/process_2.jpg' data-fancybox="gallery2")
+                                img(src='i/process_2.jpg')
+                                span 10 фотографий за декабрь 2016
+
+                            a.hide(data-fancybox="gallery2" href='i/process_img_1.jpg'): img(src='i/process_img_1.jpg')
+                            a.hide(data-fancybox="gallery2" href='i/process_img_1.jpg'): img(src='i/process_img_1.jpg')
+                            a.hide(data-fancybox="gallery2" href='i/process_img_1.jpg'): img(src='i/process_img_1.jpg')
+                            a.hide(data-fancybox="gallery2" href='i/process_img_1.jpg'): img(src='i/process_img_1.jpg')
+                            a.hide(data-fancybox="gallery2" href='i/process_img_1.jpg'): img(src='i/process_img_1.jpg')
+                            a.hide(data-fancybox="gallery2" href='i/process_img_1.jpg'): img(src='i/process_img_1.jpg')
+
+                            ul.flat_list
+                                li
+                                    a.btn_v1.orange_btn_v2.more_btn(href='#') показать еще
+
+            +footer(true)
+
+    +scripts()

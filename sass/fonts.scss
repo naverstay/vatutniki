@@ -1,20 +1,29 @@
 @font-face {
-  font-family: 'MULLERBOLD';
-  src:  url(../fonts/MULLERBOLD.eot);
-  src:  url(../fonts/MULLERBOLD.eot?#iefix) format("embedded-opentype"),
-        url(../fonts/MULLERBOLD.ttf) format("truetype"),
-        url(../fonts/MULLERBOLD.svg) format("svg");
-  font-weight: bold;
-  font-style: normal;
+    font-family: 'MULLERBOLD';
+    src: url(../fonts/MULLERBOLD.eot);
+    src: url(../fonts/MULLERBOLD.eot?#iefix) format("embedded-opentype"),
+    url(../fonts/MULLERBOLD.ttf) format("truetype"),
+    url(../fonts/MULLERBOLD.svg) format("svg");
+    font-weight: bold;
+    font-style: normal;
 }
 
 @font-face {
-  font-family: 'MULLERREGULAR';
-  src:  url(../fonts/MULLERREGULAR.eot);
-  src:  url(../fonts/MULLERREGULAR.eot?#iefix) format("embedded-opentype"),
-        url(../fonts/MULLERREGULAR.ttf) format("truetype"),
-        url(../fonts/MULLERREGULAR.svg) format("svg");
-  font-weight: normal;
-  font-style: normal;
+    font-family: 'MULLERMEDIUM';
+    src: url(../fonts/MULLERMEDIUM.eot);
+    src: url(../fonts/MULLERMEDIUM.eot?#iefix) format("embedded-opentype"),
+    url(../fonts/MULLERMEDIUM.ttf) format("truetype"),
+    url(../fonts/MULLERMEDIUM.svg) format("svg");
+    font-weight: normal;
+    font-style: normal;
 }
 
+@font-face {
+    font-family: 'MULLERREGULAR';
+    src: url(../fonts/MULLERREGULAR.eot);
+    src: url(../fonts/MULLERREGULAR.eot?#iefix) format("embedded-opentype"),
+    url(../fonts/MULLERREGULAR.ttf) format("truetype"),
+    url(../fonts/MULLERREGULAR.svg) format("svg");
+    font-weight: normal;
+    font-style: normal;
+}

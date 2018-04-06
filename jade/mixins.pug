@@ -46,7 +46,7 @@ mixin header(bdr)
                         a.menu_link(href='rules.html')
                             span условия покупки
                     li.menu_item
-                        a.menu_link(href='#')
+                        a.menu_link(href='process.html')
                             span ход строительства
                     li.menu_item
                         a.menu_link(href='#')
@@ -175,28 +175,52 @@ mixin mortgage_section()
         .section_inner
             .section_title Ипотечный калькулятор
 
-        .mortgage_col
-            .filter-cell._col-1
-                .form-cell.select-box-v1._bordered.select-multi-v1
-                    select.select2(data-dropdown-class='dropdown-v1' data-close-on-select='false' data-placeholder='Выбрать банк' data-preserve-placeholder='true')
-                        option
-                        option Тинькофф
-                        option Сбербанк
+            .mortgage_filter
+                .mortgage_col
+                    .form_cell.select-box-v1._bordered
+                        select.select2(data-dropdown-class='dropdown-v1' data-placeholder='Выбрать банк')
+                            option
+                            option Тинькофф
+                            option Сбербанк
 
-        .mortgage_col
-            .filter-cell._col-1.filterBlock.cb
-                .form-cell.toddler-val-v1
-                    .toddler-val
-                        span.label Этаж от
-                        span.start: input.f_input.input-v3.val(data-inputmask="'alias': 'decimal', 'groupSeparator': ' ', 'digitsOptional': true, 'autoGroup': true, 'rightAlign': false ")
-                        span.label &mdash;
-                        span.end: input.f_input.input-v3.val(data-inputmask="'alias': 'decimal', 'groupSeparator': ' ', 'digitsOptional': true, 'autoGroup': true, 'rightAlign': false ")
+                .mortgage_col
+                    .filterBlock
+                        .form_cell.toddler_val_v2
+                            .toddler-val.select_box_v3
+                                span.btn_v2.filter_btn.text_left._wnw Первый взнос, руб.
+                                span.start.btn_v2.filter_btn: input.f_input.input_v3.val(data-inputmask="'alias': 'decimal', 'groupSeparator': ' ', 'digitsOptional': true, 'autoGroup': true, 'rightAlign': false ")
 
-                .form-cell.toddler-v1
-                    .filterToddler(data-plural='этаж,этажа,этажей' data-min=1 data-max=100)
-                .toddler-range
-                    .min
-                    .max
+                        .form_cell.toddler_v1._single
+                            .filterToddler(data-format='money' data-single='true' data-min=0 data-max=5000000)
+                        .toddler_range
+                            .fl 100 000
+                            .fr 2 500 000
+
+                .mortgage_col
+                    .filterBlock
+                        .form_cell.toddler_val_v2
+                            .toddler-val.select_box_v3
+                                span.btn_v2.filter_btn.text_left._wnw Срок кредитования
+                                span.start.btn_v2.filter_btn
+                                    input.f_input.input_v3.val(data-inputmask="'alias': 'decimal', 'groupSeparator': '', 'digitsOptional': true, 'autoGroup': true, 'rightAlign': false ")
+                                    span.plural(data-plural='год,года,лет')
+
+                        .form_cell.toddler_v1._single
+                            .filterToddler(data-single='true' data-min=1 data-max=20)
+                        .toddler_range
+                            .fl 1 год
+                            .fr 20 лет
+
+            .mortgage_filter
+                .mortgage_col
+                    p Общая сумма выплат
+                    .flat_price 1 500 890 руб.
+                .mortgage_col
+                    p Ежемесячный платеж
+                    .flat_payment 42 500 руб.
+                .mortgage_col
+                    p Плата за пользование кредитом
+                    .flat_price 1 400 500 руб.
 
 
 mixin flat_tab()
@@ -264,6 +288,7 @@ mixin scripts(contacts)
   - else
     script(src='js/jquery1.10.js' + '?t=' + time)
     script(src='js/jquery-ui-1.11.4.js' + '?t=' + time)
+    script(src='js/jquery.fancybox.min.js' + '?t=' + time)
     script(src='js/select2.js' + '?t=' + time)
     script(src='js/nouislider.min.js' + '?t=' + time)
     script(src='js/swiper.min.js' + '?t=' + time)

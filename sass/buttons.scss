@@ -40,6 +40,17 @@
     }
 }
 
+.btn_v2 {
+    height: 38px;
+
+    &.filter_btn {
+        display: block;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 100%;
+    }
+}
+
 .orange_btn {
     @include transition_all(background .3s, color .3s);
     border: 1px solid $clr_orange;

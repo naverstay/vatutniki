@@ -1,14 +1,79 @@
 include mixins.pug
 doctype html
 html(lang='ru')
-    +dev_head('Ватутники главная')
+    +dev_head('Ватутники квартира')
 
     body
         .wrapper
             .base
-                +header()
+                +header(true)
 
                 div.main_content
+                    .unit_section
+                        .section_inner
+                            .flat_unit
+                                .flat_img
+                                    img(src='i/flat_map_big.jpg')
+
+                                    ul.flat_view_controls
+                                        li._active: a.flat_view_btn(href='#') 2D
+                                        li: a.flat_view_btn(href='#') 3D
+                                        li: a.flat_view_btn(href='#')
+                                            img(src='i/camera.png')
+                                        li: a.flat_view_btn(href='#')
+                                            img(src='i/video.png')
+
+                                .flat_unit_description
+                                    .flat_caption 2-комнатные апартаменты
+
+                                    dl.flat_info
+                                        dt Жилая площадь
+                                        dd
+                                            span 53,4м
+                                            sup 2
+
+                                        dt Общая площадь
+                                        dd
+                                            span 70,9м
+                                            sup 2
+
+                                        dt Санузел
+                                        dd
+                                            span 10,4м
+                                            sup 2
+
+                                        dt Площадь комнат
+                                        dd по запросу
+
+                                    ul.flat_features
+                                        li: .flat_feature
+                                            span
+                                                img(src='i/brush.png')
+                                            span Внутреняя отделка
+                                        li: .flat_feature
+                                            span
+                                                img(src='i/foyer.png')
+                                            span Место для гардероба
+                                        li: .flat_feature
+                                            span
+                                                img(src='i/blender.png')
+                                            span Кухня
+                                        li: .flat_feature
+                                            span
+                                                img(src='i/armchair.png')
+                                            span Прихожая
+                                        li: .flat_feature
+                                            span
+                                                img(src='i/plan.png')
+                                            span Большая кухня
+
+                                    p Стоимость
+                                    .flat_price 14 500 000 млн.руб.
+
+                                    p Узнайте подробности по телефону
+                                    .flat_contact +7 (495) 455 77 89
+
+                            .flat_seo ЖК "Селигер Сити" - индивидуальный проект комфорт-класса на севере Москвы. Комплекс уникален как в архитектурном, так и в техническом плане: дома возводятся по современной технологии информационного моделирования BIM. Команда архитекторов, проектировщиков и инженеров создает 3-D модель, которая позволяет не только строить.
 
                     +mortgage_section()
 

@@ -10,6 +10,7 @@ $icomoon-font-path: "../fonts";
 $icomoon-font-name: 'air_icons';
 
 $mullerregular: 'MULLERREGULAR', sans-serif;
+$mullermed: 'MULLERMEDIUM', sans-serif;
 $mullerbold: 'MULLERBOLD', sans-serif;
 
 $opensans: 'Open Sans', sans-serif;
@@ -35,6 +36,8 @@ $default_t_color: #3e3e3e;
 $placeholder_color: #ccc;
 
 $clr_orange: #f66036;
+$gl_white: #fff;
+$gl_black_000: #000;
 
 @mixin opacity($val : 1, $important : 0) {
     @if $important == 0 {

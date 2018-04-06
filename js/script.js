@@ -45,6 +45,10 @@ $(function ($) {
 
     initTabs();
 
+    initToddlers();
+
+    initMask();
+
     $body.delegate('.menuBtn', 'click', function () {
         $body.removeClass('search_opened').toggleClass('menu_opened');
         return false;
@@ -58,6 +62,7 @@ $(function ($) {
 
         return false;
     });
+
 });
 
 function initOverviewSlider() {
@@ -101,6 +106,239 @@ function initTabs() {
 
             }
         });
+    });
+}
+
+function toNum(str) {
+    return parseInt(str.toString().replace(/\D*/g, ''));
+}
+
+function numFormat(str) {
+    return str.replace(/(?!^)(?=(\d{3})+(?=\.|$))/gm, ' ');
+}
+
+function resize(inp) {
+    var el = $(inp), txt = el.nextAll('.widthPattern').text(el.val());
+    el.attr('style', 'width:' + (txt.outerWidth() + 1) + 'px !important;');
+}
+
+function initDynamicWidth($el) {
+    $el.each(function () {
+        var inp = $(this), ptrn = $('<span class="widthPattern" />');
+
+        ptrn.css({
+            'position': 'absolute',
+            'top': -99999,
+            'left': -99999,
+            // 'top': 0,
+            // 'left': -300,
+            'pointer-events': 'none',
+            'white-space': 'nowrap',
+            'padding': inp.css('padding'),
+            'border': inp.css('border'),
+            'font-size': inp.css('font-size'),
+            'font-style': inp.css('font-style'),
+            'font-family': inp.css('font-family'),
+            'font-weight': inp.css('font-weight'),
+            'letter-spacing': inp.css('letter-spacing')
+        });
+
+        inp.after(ptrn);
+
+        var e = 'keyup,keypress,focus,blur,change,update'.split(',');
+        for (var i in e) inp.on(e[i], function () {
+            resize(this);
+        });
+        resize(this);
+    });
+}
+
+function moneyFormat(str) {
+    return str.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1 ");
+}
+
+function getPural(n, str1, str2, str5) {
+    return ' ' + ((((n % 10) == 1) && ((n % 100) != 11)) ? (str1) : (((((n % 10) >= 2) && ((n % 10) <= 4)) && (((n % 100) < 10) || ((n % 100) >= 20))) ? (str2) : (str5)))
+}
+
+function initPriceRange() {
+    var range_val = $('#range_val'), range_start = $('#range_start'), range_end = $('#range_end');
+
+    $('.searchRangeVal').on('change cut paste drop keydown', function () {
+        setTimeout(function () {
+            var start = (range_start.val()) || 0, end = (range_end.val()) || 0;
+
+            if (!start && !end) {
+                range_val.text('Цена');
+            } else {
+                range_val.text('от ' + start + ' до ' + end);
+            }
+
+        }, 5);
+    });
+}
+
+function initMask() {
+    $("input").filter(function (i, el) {
+        return $(el).attr('data-inputmask') != void 0;
+    }).inputmask();
+}
+
+function initToddlers() {
+    var canUpdate = true;
+
+    $('.filterToddler').each(function (ind) {
+        var tdlr = $(this),
+            filter = tdlr.closest('.filterBlock'),
+            single = tdlr.attr('data-single'),
+            min = parseInt(tdlr.attr('data-min')) || 0,
+            max = parseInt(tdlr.attr('data-max')) || 10;
+
+        initDynamicWidth(filter.find('input.val'));
+
+        if (single) {
+            noUiSlider.create(this, {
+                start: max * .2,
+                connect: [true, false],
+                range: {
+                    'min': min,
+                    'max': max
+                }
+            });
+        } else {
+            noUiSlider.create(this, {
+                start: [max * .2, max * .8],
+                connect: true,
+                range: {
+                    'min': min,
+                    'max': max
+                }
+            });
+        }
+
+        this.noUiSlider.on('update', function (values, handle) {
+            var target = $(this.target),
+                filter = target.closest('.filterBlock'),
+                plural = target.attr('data-plural'),
+                plural_text = target.attr('data-plural-text') || '',
+                format = target.attr('data-format') || '',
+                suffix_1 = target.attr('data-suffix_1') || '',
+                suffix_2 = target.attr('data-suffix_2') || '',
+                val_1 = parseInt(values[0]),
+                val_2 = parseInt(values[1]),
+                plural_suffix_1 = target.attr('data-plural-suffix_1') || false,
+                plural_suffix_2 = target.attr('data-plural-suffix_2') || false,
+                plural_1 = '',
+                plural_2 = '',
+                arr = [];
+
+            if (plural != void 0) {
+                arr = plural.split(',');
+                plural_1 = plural.length > 0 ? getPural(val_1, arr[0], arr[1], arr[2]) : '';
+                plural_2 = plural.length > 0 ? getPural(val_2, arr[0], arr[1], arr[2]) : '';
+
+            } else if (plural_text.length) {
+                plural_1 = plural_2 = plural_text;
+            }
+
+            if (canUpdate) {
+                resize(filter.find('.start .val').val(
+                    (format ? ('money' == format ? moneyFormat(val_1.toString()) : val_1) : val_1) +
+                    suffix_1 + (plural_suffix_1 ? getPural(val_1, arr[0], arr[1], arr[2]) : '')
+                ));
+
+                resize(filter.find('.end .val').val(
+                    (format ? ('money' == format ? moneyFormat(val_2.toString()) : val_2) : val_2) +
+                    suffix_2 + (plural_suffix_2 ? getPural(val_2, arr[0], arr[1], arr[2]) : '')
+                ));
+
+                filter.find('.start .val').each(function (ind) {
+                    var inp = $(this), plrl = inp.nextAll('.plural');
+
+                    if (plrl.length && plrl.attr('data-plural')) {
+                        var arr = plrl.attr('data-plural').split(',');
+                        plrl.text(getPural(val_1, arr[0], arr[1], arr[2]));
+                    }
+                });
+
+                filter.find('.end .val').each(function (ind) {
+                    var inp = $(this), plrl = inp.nextAll('.plural');
+
+                    if (plrl.length && plrl.attr('data-plural')) {
+                        var arr = plrl.attr('data-plural').split(',');
+                        plrl.text(getPural(val_2, arr[0], arr[1], arr[2]));
+                    }
+                });
+            }
+
+            filter.find('.min').html(
+                (format ? ('money' == format ? moneyFormat(val_1.toString()) : val_1) : val_1) + ' ' +
+                plural_1
+            );
+
+            filter.find('.max').html(
+                (format ? ('money' == format ? moneyFormat(val_2.toString()) : val_2) : val_2) + ' ' +
+                plural_2
+            );
+
+        });
+
+        filter.find('.start input.val').on('keyup keypress change update', function () {
+            canUpdate = false;
+            tdlr[0].noUiSlider.set([toNum($(this).val()), null]);
+        }).on('blur', function () {
+            canUpdate = true;
+            tdlr[0].noUiSlider.set([toNum($(this).val()), null]);
+        });
+
+        filter.find('.end input.val').on('keyup keypress change update', function () {
+            canUpdate = false;
+            tdlr[0].noUiSlider.set([null, toNum($(this).val())]);
+        }).on('blur', function () {
+            canUpdate = true;
+            tdlr[0].noUiSlider.set([null, toNum($(this).val())]);
+        });
+
+        filter.find('.toddlerSelect').each(function (ind) {
+            var slct = $(this), target = filter.find(slct.attr('data-target'));
+
+            slct.on('change', function (e) {
+                var _this = $(this);
+                canUpdate = true;
+
+                if (_this.attr('data-target') == '.start') {
+                    tdlr[0].noUiSlider.set([_this.val(), null]);
+                } else if ($(this).attr('data-target') == '.end') {
+                    tdlr[0].noUiSlider.set([null, _this.val()]);
+                }
+
+            }).select2({
+                minimumResultsForSearch: Infinity,
+                dropdownParent: target,
+                width: '100%',
+                language: {
+                    noResults: function (e, r) {
+                        return 'Нет результатов';
+                        // return "Город не найден. <a href='#' class='gl_link _clr_turqoise'>Список городов</a>";
+                    }
+                },
+                templateResult: function (data) {
+                    return $.isNumeric(data.text) ? numFormat(data.text) : data.text;
+                },
+                escapeMarkup: function (markup) {
+                    return markup;
+                },
+                adaptDropdownCssClass: function () {
+                    return slct.attr('data-dropdown-class');
+                }
+            });
+
+            target.on('click', function () {
+                slct.select2('open');
+                return false;
+            });
+        });
+
     });
 }
 
