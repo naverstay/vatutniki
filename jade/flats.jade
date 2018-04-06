@@ -1,0 +1,70 @@
+include mixins.pug
+doctype html
+html(lang='ru')
+    +dev_head('Ватутники главная')
+
+    body
+        .wrapper
+            .base
+                +header(true)
+
+                div.main_content
+                    .flats_section
+                        .section_inner
+                            .section_title Список квартир
+                            ul.flats_share_list
+                                li
+                                    .flat_share
+                                        p: b Квартиры в Новой Москве от 3,9 млн руб.<br>Дополнительная скидка всем родителям<br>1000 р/м2!
+                                        .flat_share_date до 8 мая 2018
+                                li
+                                    .flat_share
+                                        p: b Беспроцентная рассрочка до заселения!
+                                        .flat_share_date до 10 июня 2018
+
+                            ul#flat_switcher.flat_switcher
+                                li.filter_item
+                                    a.gl_link(href='#flat_tab_1')
+                                        span.mb Все квартиры
+                                li.filter_item
+                                    a.gl_link(href='#flat_tab_2')
+                                        span.mb Студии
+                                li.filter_item
+                                    a.gl_link(href='#flat_tab_3')
+                                        span.mb 1-комнатные
+                                li.filter_item
+                                    a.gl_link(href='#flat_tab_4')
+                                        span.mb 2-комнатные
+                                li.filter_item
+                                    a.gl_link(href='#flat_tab_5')
+                                        span.mb 3-комнатные
+
+                    .flats_section._gray._bdr
+                        .tabBlock(data-tab-context='#flat_switcher')
+                            #flat_tab_1
+                                +flat_tab()
+                            #flat_tab_2
+                                +flat_tab()
+                            #flat_tab_3
+                                +flat_tab()
+                            #flat_tab_4
+                                +flat_tab()
+                            #flat_tab_5
+                                +flat_tab()
+
+                    .doc_section._info
+                        .section_inner
+                            .section_title Интересное о комплексе
+                            p.text_center ЖК "Селигер Сити" - индивидуальный проект комфорт-класса на севере Москвы. Комплекс уникален как в архитектурном, так и в техническом плане: дома возводятся по современной технологии информационного моделирования BIM. Команда архитекторов, проектировщиков и инженеров создает 3-D модель, которая позволяет не только строить, но и в дальнейшем управлять объектом. Внутри комплекса есть все для полноценной жизни: детский сад, школа, магазины, кафе, банки, службы быта, парк с прогулочными аллеями.
+
+                    +infrastructure_slider('Фотогалерея')
+
+                    .video_section
+                        .section_title Видео комплекса
+
+                    +overview_section()
+
+
+    +footer()
+
+    +scripts()

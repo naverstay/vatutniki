@@ -1,0 +1,17 @@
+include mixins.pug
+doctype html
+html(lang='ru')
+    +dev_head('Ватутники главная')
+
+    body
+        .wrapper
+            .base
+                +header()
+
+                div.main_content
+
+                    +mortgage_section()
+
+            +footer()
+
+    +scripts()

@@ -21,11 +21,11 @@ mixin loop_while(counter)
         -i++;
         block
 
-mixin header()
-    .header
+mixin header(bdr)
+    .header(class= bdr ? '_bdr' : '')
         .section_inner.clearfix
             .logo_block
-                a.logo(href='#')
+                a.logo(href='index.html')
                     img(src='i/logo.png')
                     span Новые Ватутинки<br>Центральный квартал
 
@@ -40,10 +40,10 @@ mixin header()
             .section_inner
                 ul.main_menu
                     li.menu_item
-                        a.menu_link(href='#')
+                        a.menu_link(href='flats.html')
                             span квартиры
                     li.menu_item
-                        a.menu_link(href='#')
+                        a.menu_link(href='rules.html')
                             span условия покупки
                     li.menu_item
                         a.menu_link(href='#')
@@ -56,8 +56,8 @@ mixin header()
                 a.callback_link(href='tel:+74954567887') +7 (495) 456-78-87
                 .callback_time c 9:00 до 21:00
 
-mixin footer()
-    .footer
+mixin footer(playground)
+    .footer(class= playground ? '_playground' : '')
         .section_inner.clearfix
             .footer_col._col_1
                 .logo_block
@@ -83,10 +83,10 @@ mixin footer()
                     a.clr_orange(href='#') ФЗ-214
 
 
-mixin infrastructure_slider()
+mixin infrastructure_slider(title)
     .infrastructure_slider
         .section_inner.clearfix
-            .section_title Инфраструктура
+            .section_title= title
 
             .swiper-container.main-slider.loading
                 .swiper-wrapper
@@ -170,6 +170,60 @@ mixin action_section(index)
                         a.action_btn(href='#') смотреть все
 
 
+mixin mortgage_section()
+    .mortgage_section
+        .section_inner
+            .section_title Ипотечный калькулятор
+
+        .mortgage_col
+            .filter-cell._col-1
+                .form-cell.select-box-v1._bordered.select-multi-v1
+                    select.select2(data-dropdown-class='dropdown-v1' data-close-on-select='false' data-placeholder='Выбрать банк' data-preserve-placeholder='true')
+                        option
+                        option Тинькофф
+                        option Сбербанк
+
+        .mortgage_col
+            .filter-cell._col-1.filterBlock.cb
+                .form-cell.toddler-val-v1
+                    .toddler-val
+                        span.label Этаж от
+                        span.start: input.f_input.input-v3.val(data-inputmask="'alias': 'decimal', 'groupSeparator': ' ', 'digitsOptional': true, 'autoGroup': true, 'rightAlign': false ")
+                        span.label &mdash;
+                        span.end: input.f_input.input-v3.val(data-inputmask="'alias': 'decimal', 'groupSeparator': ' ', 'digitsOptional': true, 'autoGroup': true, 'rightAlign': false ")
+
+                .form-cell.toddler-v1
+                    .filterToddler(data-plural='этаж,этажа,этажей' data-min=1 data-max=100)
+                .toddler-range
+                    .min
+                    .max
+
+
+mixin flat_tab()
+    .section_inner
+        ul.flat_list
+            +loop_while(6)
+                li
+                    .flat_unit
+                        .flat_img
+                            img(src='i/flat_map.png')
+                            .flat_value 1к
+                        dl.flat_info
+                            dt Общая площадь, м2:
+                            dd 36
+
+                            dt Жилая площадь, м2:
+                            dd 29
+
+                            dt Цена, руб.:
+                            dd от 1 900 988
+
+                        .flat_control
+                            a.btn_v1.orange_btn.flat_btn(href='flat.html') узнать больше
+
+            li
+                a.btn_v1.orange_btn_v2.more_btn(href='#') смотреть все
+
 mixin overview_section()
     .overview_section
         .section_inner
@@ -209,7 +263,9 @@ mixin scripts(contacts)
     script(src='js/main.min.js' + '?t=' + time)
   - else
     script(src='js/jquery1.10.js' + '?t=' + time)
+    script(src='js/jquery-ui-1.11.4.js' + '?t=' + time)
     script(src='js/select2.js' + '?t=' + time)
+    script(src='js/nouislider.min.js' + '?t=' + time)
     script(src='js/swiper.min.js' + '?t=' + time)
     script(src='js/jquery.inputmask.bundle.js' + '?t=' + time)
     script(src='js/script.js' + '?t=' + time)

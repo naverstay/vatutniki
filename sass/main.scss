@@ -28,6 +28,10 @@ body {
     clear: both;
 }
 
+.gl_link {
+    cursor: pointer;
+}
+
 .wrapper {
     overflow: hidden;
     position: relative;
@@ -109,6 +113,11 @@ body {
             margin-bottom: 10px;
         }
     }
+}
+
+.video_section {
+    padding-top: 20px;
+    background: #fff;
 }
 
 .overview_section {
@@ -318,6 +327,20 @@ body {
 .doc_section {
     padding: 28px 0 14px;
     background: #fff;
+
+    p {
+        margin-bottom: 10px;
+        font-size: 15px;
+        line-height: 1.75;
+    }
+
+    .section_title {
+        margin-bottom: 15px;
+    }
+
+    &._info {
+        padding-top: 16px;
+    }
 }
 
 .doc_list {

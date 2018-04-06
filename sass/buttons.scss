@@ -1,27 +1,69 @@
 //************  buttons
 
 .btn_v1 {
-    height: 50px;
+    height: 40px;
 
-    &.callback_btn {
+    &.flat_btn {
+        display: block;
+        text-align: center;
+        text-decoration: none;
         cursor: pointer;
-        border-radius: 25px;
-        padding: 16px 24px;
-        font-weight: 500;
-
-        &:before {
-            font-size: 18px;
-        }
-
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 20px;
+        padding: 9px;
+        text-transform: uppercase;
     }
 
+    &.more_btn {
+        display: block;
+        text-align: center;
+        text-decoration: none;
+        cursor: pointer;
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 20px;
+        padding: 9px;
+        margin-top: -5px;
+        letter-spacing: .15em;
+        text-transform: uppercase;
+
+        &:after {
+            content: '';
+            display: inline-block;
+            vertical-align: -2px;
+            width: 10px;
+            height: 13px;
+            margin: 0 -25px 0 12px;
+            background: url(../i/arrow_d.png) no-repeat 50% 50%;
+        }
+    }
 }
 
-.green_btn {
+.orange_btn {
+    @include transition_all(background .3s, color .3s);
+    border: 1px solid $clr_orange;
+    background: #fff;
+    color: $clr_orange;
+
+    &:hover {
+        background: $clr_orange;
+        color: #fff;
+    }
+}
+
+.orange_btn_v2 {
+    @include transition_all(background .3s, color .3s);
+    background: $clr_orange;
     color: #fff;
+    border: 1px solid $clr_orange;
+
+    &:hover {
+        color: $clr_orange;
+        background: #fff;
+    }
 }
 
 .btn_red {
     color: #fff;
-    background: #f46b65;
 }

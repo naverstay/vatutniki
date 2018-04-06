@@ -41,6 +41,10 @@ $(function ($) {
 
     initOverviewSlider();
 
+    initSelect2();
+
+    initTabs();
+
     $body.delegate('.menuBtn', 'click', function () {
         $body.removeClass('search_opened').toggleClass('menu_opened');
         return false;
@@ -88,94 +92,133 @@ function initOverviewSlider() {
 
 }
 
+function initTabs() {
+
+    $('.tabBlock').each(function (ind) {
+        $(this).tabs({
+            active: 0,
+            activate: function (e, u) {
+
+            }
+        });
+    });
+}
+
+function initSelect2() {
+    $('.select2').each(function (ind) {
+        var slct = $(this);
+
+        slct.select2({
+            minimumResultsForSearch: 1,
+            dropdownParent: slct.parent(),
+            width: '100%',
+            language: {
+                noResults: function (e, r) {
+                    return 'Нет результатов';
+                    // return "Город не найден. <a href='#' class='gl_link _clr_turqoise'>Список городов</a>";
+                }
+            },
+            escapeMarkup: function (markup) {
+                return markup;
+            },
+            adaptDropdownCssClass: function () {
+                return slct.attr('data-dropdown-class');
+            }
+        });
+    });
+}
+
 function initInfrastructureSlider() {
     var mainSliderSelector = '.main-slider',
         navSliderSelector = '.nav-slider',
         interleaveOffset = 0.5;
 
+    if ($(navSliderSelector).length && $(mainSliderSelector).length) {
+
 // Main Slider
-    var mainSliderOptions = {
-        loop: true,
-        speed: 1000,
-        //autoplay: {
-        //    delay: 3000
-        //},
-        loopAdditionalSlides: 10,
-        grabCursor: true,
-        watchSlidesProgress: true,
-        navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
-        },
-        on: {
-            init: function () {
-                this.autoplay.stop();
+        var mainSliderOptions = {
+            loop: true,
+            speed: 1000,
+            //autoplay: {
+            //    delay: 3000
+            //},
+            loopAdditionalSlides: 10,
+            grabCursor: true,
+            watchSlidesProgress: true,
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
             },
-            imagesReady: function () {
-                this.el.classList.remove('loading');
-                //this.autoplay.start();
-            },
-            slideChangeTransitionEnd: function () {
-                var swiper = this,
-                    captions = swiper.el.querySelectorAll('.caption');
-                for (var i = 0; i < captions.length; ++i) {
-                    captions[i].classList.remove('show');
-                }
-                swiper.slides[swiper.activeIndex].querySelector('.caption').classList.add('show');
-            },
-            progress: function () {
-                var swiper = this;
-                for (var i = 0; i < swiper.slides.length; i++) {
-                    var slideProgress = swiper.slides[i].progress,
-                        innerOffset = swiper.width * interleaveOffset,
-                        innerTranslate = slideProgress * innerOffset;
-                    swiper.slides[i].querySelector(".slide-bgimg").style.transform =
-                        "translate3d(" + innerTranslate + "px, 0, 0)";
-                }
-            },
-            touchStart: function () {
-                var swiper = this;
-                for (var i = 0; i < swiper.slides.length; i++) {
-                    swiper.slides[i].style.transition = "";
-                }
-            },
-            setTransition: function (speed) {
-                var swiper = this;
-                for (var i = 0; i < swiper.slides.length; i++) {
-                    swiper.slides[i].style.transition = speed + "ms";
-                    swiper.slides[i].querySelector(".slide-bgimg").style.transition =
-                        speed + "ms";
+            on: {
+                init: function () {
+                    this.autoplay.stop();
+                },
+                imagesReady: function () {
+                    this.el.classList.remove('loading');
+                    //this.autoplay.start();
+                },
+                slideChangeTransitionEnd: function () {
+                    var swiper = this,
+                        captions = swiper.el.querySelectorAll('.caption');
+                    for (var i = 0; i < captions.length; ++i) {
+                        captions[i].classList.remove('show');
+                    }
+                    swiper.slides[swiper.activeIndex].querySelector('.caption').classList.add('show');
+                },
+                progress: function () {
+                    var swiper = this;
+                    for (var i = 0; i < swiper.slides.length; i++) {
+                        var slideProgress = swiper.slides[i].progress,
+                            innerOffset = swiper.width * interleaveOffset,
+                            innerTranslate = slideProgress * innerOffset;
+                        swiper.slides[i].querySelector(".slide-bgimg").style.transform =
+                            "translate3d(" + innerTranslate + "px, 0, 0)";
+                    }
+                },
+                touchStart: function () {
+                    var swiper = this;
+                    for (var i = 0; i < swiper.slides.length; i++) {
+                        swiper.slides[i].style.transition = "";
+                    }
+                },
+                setTransition: function (speed) {
+                    var swiper = this;
+                    for (var i = 0; i < swiper.slides.length; i++) {
+                        swiper.slides[i].style.transition = speed + "ms";
+                        swiper.slides[i].querySelector(".slide-bgimg").style.transition =
+                            speed + "ms";
+                    }
                 }
             }
-        }
-    };
-    var mainSlider = new Swiper(mainSliderSelector, mainSliderOptions);
+        };
+        var mainSlider = new Swiper(mainSliderSelector, mainSliderOptions);
 
 // Navigation Slider
-    var navSliderOptions = {
-        loop: true,
-        loopAdditionalSlides: 10,
-        speed: 1000,
-        spaceBetween: 20,
-        slidesPerView: 3,
-        centeredSlides: true,
-        touchRatio: 0.2,
-        slideToClickedSlide: true,
-        direction: 'vertical',
-        on: {
-            imagesReady: function () {
-                this.el.classList.remove('loading');
-            },
-            click: function () {
-                mainSlider.autoplay.stop();
+        var navSliderOptions = {
+            loop: true,
+            loopAdditionalSlides: 10,
+            speed: 1000,
+            spaceBetween: 20,
+            slidesPerView: 3,
+            centeredSlides: true,
+            touchRatio: 0.2,
+            slideToClickedSlide: true,
+            direction: 'vertical',
+            on: {
+                imagesReady: function () {
+                    this.el.classList.remove('loading');
+                },
+                click: function () {
+                    mainSlider.autoplay.stop();
+                }
             }
-        }
-    };
-    var navSlider = new Swiper(navSliderSelector, navSliderOptions);
+        };
+        var navSlider = new Swiper(navSliderSelector, navSliderOptions);
 
 // Matching sliders
-    mainSlider.controller.control = navSlider;
-    navSlider.controller.control = mainSlider;
+        mainSlider.controller.control = navSlider;
+        navSlider.controller.control = mainSlider;
+    }
 }
 
 function initMainSlider() {
