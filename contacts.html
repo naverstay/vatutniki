@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ru">
   <head>
-    <title>Ватутники ход строительства</title>
+    <title>Ватутники контакты</title>
     <!-- saved from url=(0014)about:internet -->
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -15,7 +15,7 @@
   <body>
     <div class="wrapper">
       <div class="base">
-        <div class="header _bdr">
+        <div class="header">
           <div class="section_inner clearfix">
             <div class="logo_block"><a class="logo" href="index.html"><img src="i/logo.png"/><span>Новые Ватутинки<br>Центральный квартал</span></a></div><a class="mob_menu_btn menuBtn" href="#"><span></span></a>
             <div class="callback_block"><a class="callback_link" href="tel:+74954567887">+7 (495) 456-78-87</a>
@@ -37,18 +37,35 @@
           </div>
         </div>
         <div class="main_content">
-          <div class="process_section">
-            <div class="section_inner">
-              <h3 class="process_caption">Январь 2017</h3><a class="process_img" href="i/process_1.jpg" data-fancybox="gallery1"><img src="i/process_1.jpg"><span>10 фотографий за январь 2017</span></a><a class="hide" data-fancybox="gallery1" href="i/process_img_1.jpg"><img src="i/process_img_1.jpg"></a><a class="hide" data-fancybox="gallery1" href="i/process_img_1.jpg"><img src="i/process_img_1.jpg"></a><a class="hide" data-fancybox="gallery1" href="i/process_img_1.jpg"><img src="i/process_img_1.jpg"></a><a class="hide" data-fancybox="gallery1" href="i/process_img_1.jpg"><img src="i/process_img_1.jpg"></a><a class="hide" data-fancybox="gallery1" href="i/process_img_1.jpg"><img src="i/process_img_1.jpg"></a><a class="hide" data-fancybox="gallery1" href="i/process_img_1.jpg"><img src="i/process_img_1.jpg"></a>
-              <h3 class="process_caption">Декабрь 2016</h3><a class="process_img" href="i/process_2.jpg" data-fancybox="gallery2"><img src="i/process_2.jpg"><span>10 фотографий за декабрь 2016</span></a><a class="hide" data-fancybox="gallery2" href="i/process_img_1.jpg"><img src="i/process_img_1.jpg"></a><a class="hide" data-fancybox="gallery2" href="i/process_img_1.jpg"><img src="i/process_img_1.jpg"></a><a class="hide" data-fancybox="gallery2" href="i/process_img_1.jpg"><img src="i/process_img_1.jpg"></a><a class="hide" data-fancybox="gallery2" href="i/process_img_1.jpg"><img src="i/process_img_1.jpg"></a><a class="hide" data-fancybox="gallery2" href="i/process_img_1.jpg"><img src="i/process_img_1.jpg"></a><a class="hide" data-fancybox="gallery2" href="i/process_img_1.jpg"><img src="i/process_img_1.jpg"></a>
-              <ul class="flat_list">
-                <li><a class="btn_v1 orange_btn_v2 more_btn" href="#">показать еще</a></li>
-              </ul>
+          <div class="map_section">
+            <div class="map_block" id="ymap"></div>
+            <div class="map_info_holder">
+              <div class="map_info">
+                <ul class="map_switcher" id="map_switcher">
+                  <li class="map_item"><a class="gl_link _bus" href="#map_tab_1"></a></li>
+                  <li class="map_item"><a class="gl_link _car" href="#map_tab_2"></a></li>
+                  <li class="map_item"><a class="gl_link _walk" href="#map_tab_3"></a></li>
+                </ul>
+                <div class="tabBlock" data-tab-context="#map_switcher">
+                  <div id="map_tab_1">
+                    <h4 class="map_caption">На общественном транспорте</h4>
+                    <p>Если вам нужно добраться до определенного адреса на личном авто, незаменимым помощником станет GPS-навигатор. В крупных мегаполисах этот прибор значительно облегчает поиск необходимых маршрутов большинству автолюбителей. Введя искомый адрес, вы получите подробную информацию о том, как добраться до указанного пункта из того места, где вы сейчас находитесь.</p>
+                  </div>
+                  <div id="map_tab_2">
+                    <h4 class="map_caption">На автомобиле</h4>
+                    <p>Если вам нужно добраться до определенного адреса на личном авто, незаменимым помощником станет GPS-навигатор. В крупных мегаполисах этот прибор значительно облегчает поиск необходимых маршрутов большинству автолюбителей. Введя искомый адрес, вы получите подробную информацию о том, как добраться до указанного пункта из того места, где вы сейчас находитесь.</p>
+                  </div>
+                  <div id="map_tab_3">
+                    <h4 class="map_caption">Пешком</h4>
+                    <p>Если вам нужно добраться до определенного адреса на личном авто, незаменимым помощником станет GPS-навигатор. В крупных мегаполисах этот прибор значительно облегчает поиск необходимых маршрутов большинству автолюбителей. Введя искомый адрес, вы получите подробную информацию о том, как добраться до указанного пункта из того места, где вы сейчас находитесь.</p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
-      <div class="footer _playground">
+      <div class="footer">
         <div class="section_inner clearfix">
           <div class="footer_col _col_1">
             <div class="logo_block"><a class="logo" href="#"><img src="i/logo.png"/><span>Новые Ватутинки<br>Центральный квартал</span></a></div>
@@ -77,4 +94,6 @@
   <script src="js/swiper.min.js?t=1523089716331"></script>
   <script src="js/jquery.inputmask.bundle.js?t=1523089716331"></script>
   <script src="js/script.js?t=1523089716331"></script>
+  <script src="//api-maps.yandex.ru/2.1/?lang=ru_RU"></script>
+  <script src="js/contacts.js"></script>
 </html>

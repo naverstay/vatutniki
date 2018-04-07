@@ -49,7 +49,7 @@ mixin header(bdr)
                         a.menu_link(href='process.html')
                             span ход строительства
                     li.menu_item
-                        a.menu_link(href='#')
+                        a.menu_link(href='contacts.html')
                             span контакты
 
             .callback_block
@@ -296,6 +296,6 @@ mixin scripts(contacts)
     script(src='js/script.js' + '?t=' + time)
 
   - if (contacts)
+    script(src='//api-maps.yandex.ru/2.1/?lang=ru_RU')
     script(src='js/contacts' + (prod ? '.min' : '') + '.js')
-    script(src='//maps.googleapis.com/maps/api/js?key=AIzaSyCl7THpWflv0u70jhfuU4T6KbuNy0fuxME&callback=loadMap')
 

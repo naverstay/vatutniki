@@ -4459,6 +4459,127 @@ body {
   }
 }
 
+.map_section {
+  position: relative;
+}
+
+@media only screen and (min-width: 768px) {
+  .map_section {
+    height: 640px;
+  }
+}
+
+.map_block {
+  position: relative;
+  min-height: 320px;
+}
+
+@media only screen and (min-width: 768px) {
+  .map_block {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+}
+
+.map_info_holder {
+  margin: 20px 0 40px;
+}
+
+@media only screen and (min-width: 768px) {
+  .map_info_holder {
+    -webkit-transform: translate(0, -50%);
+    -ms-transform: translate(0, -50%);
+    transform: translate(0, -50%);
+    position: absolute;
+    z-index: 1;
+    right: 20px;
+    width: 280px;
+    max-width: 90%;
+    top: 50%;
+    margin: 0;
+  }
+}
+
+.map_info {
+  padding: 12px;
+}
+
+.map_info p {
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+@media only screen and (min-width: 768px) {
+  .map_info {
+    padding: 25px 35px 35px;
+    background: #fff;
+    box-shadow: 0 0 7px rgba(0, 0, 0, 0.18);
+  }
+}
+
+.map_caption {
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.map_switcher {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.map_switcher li {
+  display: inline-block;
+  vertical-align: top;
+  padding: 0 2px 5px;
+}
+
+.map_switcher .gl_link {
+  -webkit-transition: background 0.3s, border 0.3s;
+  -ms-transition: background 0.3s, border 0.3s;
+  transition: background 0.3s, border 0.3s;
+  display: block;
+  border-radius: 100%;
+  width: 46px;
+  height: 46px;
+  cursor: pointer;
+  background-color: #fff;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  border: 1px solid #d3d3d3;
+}
+
+.map_switcher .gl_link._bus {
+  background-image: url(../i/bus_g.png);
+}
+
+.map_switcher .gl_link._car {
+  background-image: url(../i/car_g.png);
+}
+
+.map_switcher .gl_link._walk {
+  background-image: url(../i/walkman_g.png);
+}
+
+.map_switcher .ui-state-active .gl_link {
+  background-color: #f66036;
+}
+
+.map_switcher .ui-state-active .gl_link._bus {
+  background-image: url(../i/bus_w.png);
+}
+
+.map_switcher .ui-state-active .gl_link._car {
+  background-image: url(../i/car_w.png);
+}
+
+.map_switcher .ui-state-active .gl_link._walk {
+  background-image: url(../i/walkman_w.png);
+}
+
 .select-box-v1 .select2-container--default .select2-selection__rendered {
   -webkit-transition: color 0.3s;
   -ms-transition: color 0.3s;

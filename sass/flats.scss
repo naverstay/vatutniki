@@ -654,3 +654,112 @@
         margin-bottom: 20px;
     }
 }
+
+.map_section {
+    position: relative;
+
+    @include respond-to-min($resp_step_1) {
+        height: 640px;
+    }
+}
+
+.map_block {
+    position: relative;
+    min-height: 320px;
+
+    @include respond-to-min($resp_step_1) {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+    }
+}
+
+.map_info_holder {
+    margin: 20px 0 40px;
+
+    @include respond-to-min($resp_step_1) {
+        @include transform_translate(0, -50%);
+        position: absolute;
+        z-index: 1;
+        right: 20px;
+        width: 280px;
+        max-width: 90%;
+        top: 50%;
+        margin: 0;
+    }
+}
+
+.map_info {
+    padding: 12px;
+
+    p {
+        font-size: 14px;
+        line-height: 1.6;
+    }
+
+    @include respond-to-min($resp_step_1) {
+        padding: 25px 35px 35px;
+        background: #fff;
+        box-shadow: 0 0 7px rgba(0, 0, 0, .18);
+    }
+}
+
+.map_caption {
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.map_switcher {
+    text-align: center;
+    margin-bottom: 20px;
+
+    li {
+        display: inline-block;
+        vertical-align: top;
+        padding: 0 2px 5px;
+    }
+
+    .gl_link {
+        @include transition_all(background .3s, border .3s);
+        display: block;
+        border-radius: 100%;
+        width: 46px;
+        height: 46px;
+        cursor: pointer;
+        background-color: #fff;
+        background-position: 50% 50%;
+        background-repeat: no-repeat;
+        border: 1px solid #d3d3d3;
+
+        &._bus {
+            background-image: url(../i/bus_g.png);
+        }
+
+        &._car {
+            background-image: url(../i/car_g.png);
+        }
+
+        &._walk {
+            background-image: url(../i/walkman_g.png);
+        }
+    }
+
+    .ui-state-active .gl_link {
+        background-color: $clr_orange;
+
+        &._bus {
+            background-image: url(../i/bus_w.png);
+        }
+
+        &._car {
+            background-image: url(../i/car_w.png);
+        }
+
+        &._walk {
+            background-image: url(../i/walkman_w.png);
+        }
+    }
+}
