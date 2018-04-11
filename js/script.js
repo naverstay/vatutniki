@@ -49,7 +49,26 @@ $(function ($) {
 
     initMask();
 
-    $body.delegate('.menuBtn', 'click', function () {
+    $body
+        .delegate('.loadMoreOffers', 'click', function () {
+            $('.mortgageTable').append('<div class="row _body"><div class="td _col_1">Тинькофф Банк</div><div class="td _col_2">20%</div><div class="td _col_3">19,9%</div><div class="td _col_4">до 25 лет</div></div><div class="row _body"><div class="td _col_1">Тинькофф Банк</div><div class="td _col_2">20%</div><div class="td _col_3">19,9%</div><div class="td _col_4">до 25 лет</div></div><div class="row _body"><div class="td _col_1">Тинькофф Банк</div><div class="td _col_2">20%</div><div class="td _col_3">19,9%</div><div class="td _col_4">до 25 лет</div></div>');
+            return false;
+        })
+        .delegate('.loadMorePhotos', 'click', function () {
+            $('.loadMarker').before('<div class="process_block"> <h3 class="process_caption">Ноябрь 2016</h3><a class="process_img" href="i/process_2.jpg" data-fancybox="gallery3"><img src="i/process_2.jpg"><span>10 фотографий за ноябрь 2016</span></a><a class="hide" data-fancybox="gallery3" href="i/process_img_1.jpg"><img src="i/process_img_1.jpg"></a><a class="hide" data-fancybox="gallery3" href="i/process_img_1.jpg"><img src="i/process_img_1.jpg"></a><a class="hide" data-fancybox="gallery3" href="i/process_img_1.jpg"><img src="i/process_img_1.jpg"></a><a class="hide" data-fancybox="gallery3" href="i/process_img_1.jpg"><img src="i/process_img_1.jpg"></a><a class="hide" data-fancybox="gallery3" href="i/process_img_1.jpg"><img src="i/process_img_1.jpg"></a><a class="hide" data-fancybox="gallery3" href="i/process_img_1.jpg"><img src="i/process_img_1.jpg"></a> </div>');
+            return false;
+        }).delegate('.sortBtn', 'click', function () {
+        var btn = $(this);
+        $('.sortBtn').not(btn).removeClass('_asc').removeClass('_desc');
+
+        if (!btn.hasClass('_asc') && !btn.hasClass('_desc')) {
+            btn.addClass('_desc');
+        } else {
+            btn.toggleClass('_asc').toggleClass('_desc');
+        }
+
+        return false;
+    }).delegate('.menuBtn', 'click', function () {
         $body.removeClass('search_opened').toggleClass('menu_opened');
         return false;
     }).delegate('.overviewTab', 'click', function () {

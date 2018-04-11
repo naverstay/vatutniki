@@ -88,6 +88,7 @@ $main_slider_h: 515px;
     .swiper-slide {
         overflow: hidden;
         @extend %backface_visibility_hidden;
+
         .slide-bgimg {
             position: absolute;
             top: 0;
@@ -96,6 +97,16 @@ $main_slider_h: 515px;
             height: 100%;
             background-position: center;
             background-size: cover;
+
+            &:before {
+                content: '';
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                background: rgba(0, 0, 0, .21);
+            }
         }
         .entity-img {
             display: none;

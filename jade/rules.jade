@@ -14,16 +14,16 @@ html(lang='ru')
                             .section_title Ипотека
 
                             .mortgage_offers
-                                .mortgage_table
+                                .mortgage_table.mortgageTable
                                     .row._head
                                         .td._col_1
-                                            a.gl_link(href='#') название банка
+                                            a.gl_link.sortBtn(href='#') название банка
                                         .td._col_2
-                                            a.gl_link._desc(href='#') первоначальный взнос
+                                            a.gl_link.sortBtn._desc(href='#') первоначальный взнос
                                         .td._col_3
-                                            a.gl_link._asc(href='#') процентная ставка
+                                            a.gl_link.sortBtn(href='#') процентная ставка
                                         .td._col_4
-                                            a.gl_link(href='#') срок кредитования
+                                            a.gl_link.sortBtn(href='#') срок кредитования
 
                                     +loop_while(6)
                                         .row._body
@@ -34,7 +34,7 @@ html(lang='ru')
 
                             ul.flat_list
                                 li
-                                    a.btn_v1.orange_btn_v2.more_btn(href='#') показать еще
+                                    a.btn_v1.orange_btn_v2.more_btn.loadMoreOffers(href='#') показать еще
 
                     .flats_section._bdr._playground
                         .section_inner

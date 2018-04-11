@@ -3651,6 +3651,16 @@ body {
   background-size: cover;
 }
 
+.infrastructure_slider .swiper-slide .slide-bgimg:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.21);
+}
+
 .infrastructure_slider .swiper-slide .entity-img {
   display: none;
 }
@@ -4235,14 +4245,6 @@ body {
   }
 }
 
-#triangle-down {
-  width: 0;
-  height: 0;
-  border-left: 50px solid transparent;
-  border-right: 50px solid transparent;
-  border-top: 100px solid red;
-}
-
 .mortgage_table {
   margin-bottom: 20px;
 }
@@ -4496,7 +4498,7 @@ body {
     position: absolute;
     z-index: 1;
     right: 20px;
-    width: 280px;
+    width: 347px;
     max-width: 90%;
     top: 50%;
     margin: 0;
