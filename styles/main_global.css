@@ -3654,11 +3654,21 @@ body {
 .infrastructure_slider .swiper-slide .slide-bgimg:before {
   content: '';
   position: absolute;
-  top: 0;
+  height: 100%;
   bottom: 0;
   left: 0;
   right: 0;
-  background: rgba(0, 0, 0, 0.21);
+  opacity: .5;
+  background: -moz-linear-gradient(top, transparent 0%, black 100%);
+  background: -webkit-linear-gradient(top, transparent 0%, black 100%);
+  background: linear-gradient(to bottom, transparent 0%, black 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#000000', GradientType=0);
+}
+
+@media only screen and (min-width: 1200px) {
+  .infrastructure_slider .swiper-slide .slide-bgimg:before {
+    height: 50%;
+  }
 }
 
 .infrastructure_slider .swiper-slide .entity-img {
